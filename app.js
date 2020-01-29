@@ -20,20 +20,20 @@ bitcoinapi.setWalletDetails(settings.wallet);
 if (settings.heavy != true) {
   bitcoinapi.setAccess('only', [
 	'getinfo',
-	'getnetworkhashps', 
+	'getnetworkhashps',
 	'getmininginfo',
 	'getdifficulty',
 	'getconnectioncount',
-        'getblockcount',
-	'getblockhash', 
-	'getblock', 
-	'getrawtransaction', 
-	'getpeerinfo', 
+  'getblockcount',
+	'getblockhash',
+	'getblock',
+	'getrawtransaction',
+	'getpeerinfo',
 	'gettxoutsetinfo',
 	'getmasternodecount',
 	'getmasternodecountonline',
 	'masternode',
-        'masternodelist', 
+  'masternodelist', 
 	'verifymessage'
       ]);
 } else {
@@ -50,25 +50,25 @@ if (settings.heavy != true) {
     getmaxmoney - Returns the maximum possible money supply.
   */
   bitcoinapi.setAccess('only', [
-	'getinfo', 
-	'getstakinginfo', 
-	'getnetworkhashps', 
-	'getdifficulty', 
+	'getinfo',
+	'getstakinginfo',
+	'getnetworkhashps',
+	'getdifficulty',
 	'getconnectioncount',
-	'getblockcount', 
-	'getblockhash', 
-	'getblock', 
+	'getblockcount',
+	'getblockhash',
+	'getblock',
 	'getrawtransaction',
-	'getmaxmoney', 
+	'getmaxmoney',
 	'getvote',
-	'getmaxvote', 
-	'getphase', 
-	'getreward', 
-	'getnextrewardestimate', 
+	'getmaxvote',
+	'getphase',
+	'getreward',
+	'getnextrewardestimate',
 	'getnextrewardwhenstr',
-	'getnextrewardwhensec', 
-	'getsupply', 
-	'gettxoutsetinfo', 
+	'getnextrewardwhensec',
+	'getsupply',
+	'gettxoutsetinfo',
 	'verifymessage']);
 }
 // view engine setup
@@ -282,7 +282,7 @@ app.set('locale', locale);
 app.set('display', settings.display);
 app.set('markets', settings.markets);
 app.set('twitter', settings.twitter);
-app.set('facebook', settings.facebook); 
+app.set('facebook', settings.facebook);
 app.set('googleplus', settings.googleplus);
 app.set('youtube', settings.youtube);
 app.set('genesis_block', settings.genesis_block);
