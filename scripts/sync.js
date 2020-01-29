@@ -5,6 +5,7 @@ var mongoose = require('mongoose')
   , AddressTx = require('../models/addresstx')
   , Richlist = require('../models/richlist')
   , Stats = require('../models/stats')
+  , MasternodeStats = require('../models/masternodeStats')
   , settings = require('../lib/settings')
   , fs = require('fs');
 
@@ -58,6 +59,8 @@ if (process.argv[2] == 'index') {
   }
 } else if (process.argv[2] == 'market'){
   database = 'market';
+} else if (process.argv[2] === 'mnstats'){
+  database = 'mnstats';
 } else {
   usage();
 }

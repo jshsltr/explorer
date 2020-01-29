@@ -28,6 +28,8 @@ html
           $.ajax({url: '/ext/summary', success: function(json){
             $("#supply").text(parseInt(parseFloat(json.data[0].supply).toFixed(0)).toLocaleString('en'));
             $("#difficulty").text(parseFloat(json.data[0].difficulty).toFixed(2));
+            $("#masternodeCount").text(json.data[0].masternodeCount);
+            $("#masternodeOnlineCount").text(json.data[0].masternodeOnlineCount);
             $("#difficultyHybrid").text(json.data[0].difficultyHybrid);
             $("#hashrate").text(parseFloat(json.data[0].hashrate).toLocaleString('en'));
             $("#lastPrice").text(parseFloat(json.data[0].lastPrice).toFixed(8) + ' #{settings.markets.exchange}'.toUpperCase());
@@ -121,6 +123,11 @@ html
                 a.navbar-link.loading(href='/markets/'+settings.markets.default)
                   span.fa.fa-line-chart
                   span.menu-text #{settings.locale.menu_markets}
+            if settings.display.masternodes == true
+              li#masternodes
+                a.navbar-link.loading(href='/masternodes')
+                  span.fa.fa-server
+                  span.menu-text #{settings.locale.menu_masternodes}
             if settings.display.api == true
               li#info
                 a.navbar-link(href='/info')

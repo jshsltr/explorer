@@ -184,6 +184,10 @@ router.get('/richlist', function(req, res) {
   }
 });
 
+router.get('/masternodes', function(req, res) {
+  res.render('masternodes', {active: 'masternodes'});
+});
+
 router.get('/movement', function(req, res) {
   res.render('movement', {active: 'movement', flaga: settings.movement.low_flag, flagb: settings.movement.high_flag, min_amount:settings.movement.min_amount});
 });
@@ -318,4 +322,66 @@ router.get('/ext/summary', function(req, res) {
     });
   });
 });
+      
+router.get('/ext/masternodes', function(req, res) {
+  lib.get_masternodelist(function(list) {
+    var mnList = [];
+    for (var key in list) {
+      if (settings.baseType === 'pivx')
+      {
+        var mn = list[key];
+        var mnItem = {
+          address: mn.addr,
+          status: mn.status,
+          lastseen: mn.lastseen,
+          lastpaidtime: mn.lastpaid,
+//          ip: ""
+        };
+        mnList.push(mnItem);
+
+        continue;
+      }
+
+      if (list.hasOwnProperty(key)) {
+        var mnData = list[key].split(/(\s+)/).filter( function(e) { return e.trim().length > 0; } );
+        var mnItem = {
+          address: "",
+          status: "",
+          lastseen: "",
+          lastpaidtime: "",
+          ip: ""
+        };
+
+        // Address
+        if (settings.masternodes.list_format.address === 0)
+          mnItem.address = key;
+        else if (settings.masternodes.list_format.address > -1)
+          mnItem.address = mnData[settings.masternodes.list_format.address - 1];
+
+        // Status
+        if (settings.masternodes.list_format.status > -1)
+          mnItem.status = mnData[settings.masternodes.list_format.status - 1];
+
+        // last seen
+        if (settings.masternodes.list_format.lastseen > -1)
+          mnItem.lastseen = mnData[settings.masternodes.list_format.lastseen - 1];
+
+        // last paid
+        if (settings.masternodes.list_format.lastpaidtime > -1)
+          mnItem.lastpaidtime = mnData[settings.masternodes.list_format.lastpaidtime - 1];
+
+/*        // IP
+        if (settings.masternodes.list_format.ip === 0)
+          mnItem.ip = key.trim().replace(':'+settings.masternodes.default_port, '');
+        else if (settings.masternodes.list_format.ip > -1)
+          mnItem.ip = mnData[settings.masternodes.list_format.ip - 1].trim().replace(':'+settings.masternodes.default_port, '');
+*/
+        mnList.push(mnItem);
+      }
+    }
+
+    res.send({ data: mnList });
+  });
+});
+
 module.exports = router;
