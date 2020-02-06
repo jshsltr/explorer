@@ -18,8 +18,23 @@ var app = express();
 // bitcoinapi
 bitcoinapi.setWalletDetails(settings.wallet);
 if (settings.heavy != true) {
-  bitcoinapi.setAccess('only', ['getinfo', 'getnetworkhashps', 'getmininginfo','getdifficulty', 'getconnectioncount',
-    'getblockcount', 'getblockhash', 'getblock', 'getrawtransaction', 'getpeerinfo', 'gettxoutsetinfo', 'verifymessage']);
+  bitcoinapi.setAccess('only', [
+    'getinfo',
+    'getnetworkhashps',
+    'getmininginfo',
+    'getdifficulty',
+    'getconnectioncount',
+    'getblockcount',
+    'getblockhash',
+    'getblock',
+    'getrawtransaction',
+    'getpeerinfo',
+    'gettxoutsetinfo',
+    'verifymessage',
+    'masternode',
+    'masternodelist',
+    'getgovernanceinfo',
+  ]);
 } else {
   // enable additional heavy api calls
   /*
@@ -33,10 +48,30 @@ if (settings.heavy != true) {
     getsupply - Returns the current money supply.
     getmaxmoney - Returns the maximum possible money supply.
   */
-  bitcoinapi.setAccess('only', ['getinfo', 'getstakinginfo', 'getnetworkhashps', 'getdifficulty', 'getconnectioncount',
-    'getblockcount', 'getblockhash', 'getblock', 'getrawtransaction','getmaxmoney', 'getvote',
-    'getmaxvote', 'getphase', 'getreward', 'getnextrewardestimate', 'getnextrewardwhenstr',
-    'getnextrewardwhensec', 'getsupply', 'gettxoutsetinfo', 'verifymessage']);
+  bitcoinapi.setAccess('only', [
+    'getinfo',
+    'getstakinginfo',
+    'getnetworkhashps',
+    'getdifficulty',
+    'getconnectioncount',
+    'getblockcount',
+    'getblockhash',
+    'getblock',
+    'getrawtransaction',
+    'masternode'
+    'masternodelist',
+    'getmaxmoney',
+    'getvote',
+    'getmaxvote',
+    'getphase',
+    'getreward',
+    'getnextrewardestimate',
+    'getnextrewardwhenstr',
+    'getnextrewardwhensec',
+    'getsupply',
+    'gettxoutsetinfo',
+    'verifymessage'
+  ]);
 }
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -249,7 +284,7 @@ app.set('locale', locale);
 app.set('display', settings.display);
 app.set('markets', settings.markets);
 app.set('twitter', settings.twitter);
-app.set('facebook', settings.facebook); 
+app.set('facebook', settings.facebook);
 app.set('googleplus', settings.googleplus);
 app.set('youtube', settings.youtube);
 app.set('genesis_block', settings.genesis_block);
