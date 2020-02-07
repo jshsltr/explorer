@@ -13,6 +13,7 @@
     "menu_movement": "Movement",
     "menu_node": "Nodes",
     "menu_network": "Network",
+    "menu_masternodes": "Masternodes",
 
     // explorer view
     "ex_title": "Block Explorer",
@@ -44,6 +45,7 @@
     // global
     "difficulty": "Difficulty",
     "network": "Network",
+    "masternodes": "Masternodes"
     "height": "Height",
     "timestamp": "Timestamp",
     "size": "Size",
@@ -95,7 +97,6 @@
     "api_getblockhash": "Returns the hash of the block at ; index 0 is the genesis block.",
     "api_getblock": "Returns information about the block with the given hash.",
     "api_getrawtransaction": "Returns raw transaction representation for given transaction id. decrypt can be set to 0(false) or 1(true).",
-    "api_masternodelist": "Returns list of all Masternodes currently recognized by the network along with associated characteristics."
     "api_getmaxmoney": "Returns the maximum possible money supply.",
     "api_getmaxvote": "Returns the maximum allowed vote for the current phase of voting.",
     "api_getvote": "Returns the current block reward vote setting.",

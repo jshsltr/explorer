@@ -34,9 +34,26 @@ html
             $("#marketCap").text((parseFloat(json.data[0].lastPrice).toFixed(8) * parseInt(parseFloat(json.data[0].supply).toFixed(0))).toLocaleString('en') + ' #{settings.markets.exchange}'.toUpperCase());
             $("#lblConnections").text(json.data[0].connections + ' connections');
             $("#lblBlockcount").text(json.data[0].blockcount + ' blocks');
+            $("#masternodeCount").text(json.data[0].masternodeCount);
+            $("#masternodeOnlineCount").text(json.data[0].masternodeOnlineCount);
+            $("#cmc_market_cap").text(json.data[0].marketCapUsd);
+            $("#cmc_volume_24h").text(json.data[0].marketVolumeUsd);
             $("#lblX1").text(' ');
-          }});
-        }
+
+
+            if (json.data[0].cmc) {
+                         if (json.data[0].cmc.percent_change_24h) {
+                           $("#price_percent_change_value").text(json.data[0].cmc.percent_change_24h);
+                           if (json.data[0].cmc.percent_change_24h.substr(0, 1) === '-')
+                             $("#price_percent_change").attr('class', 'text-danger');
+                           else
+                             $("#price_percent_change").attr('class', 'text-success');
+                         }
+                         if (json.data[0].cmc.rank)
+                           $("#cmc_rank").text(json.data[0].cmc.rank);
+                       }
+                     }});
+                   }
         $('.block-last-next').tooltip({
           animation: true,
           delay: { hide: 500 },
@@ -121,6 +138,16 @@ html
                 a.navbar-link.loading(href='/markets/'+settings.markets.default)
                   span.fa.fa-line-chart
                   span.menu-text #{settings.locale.menu_markets}
+            if settings.display.masternodes == true
+              li#masternodes
+                a.navbar-link.loading(href='/masternodes')
+                  span.fa.fa-server
+                  span.menu-text #{settings.locale.menu_masternodes}
+            if settings.display.coininfo == true
+              li#coininfo
+                a.navbar-link.loading(href='/coininfo')
+                span.fa.fa-vcard-o
+                span.menu-text #{settings.locale.menu_coininfo}                  
             if settings.display.api == true
               li#info
                 a.navbar-link(href='/info')

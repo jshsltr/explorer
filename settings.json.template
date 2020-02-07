@@ -15,6 +15,12 @@
   // coin symbol
   "symbol": "NEXT",
 
+  // coin type
+  //  Options:
+  //    bitcoin = Default Bitcoin/Dash/... clones
+  //    ripple = Ripple clones
+  "baseType": "bitcoin",
+
   // logo
   "logo": "/images/logo.png",
 
@@ -73,7 +79,9 @@
     "search": true,
     "movement": true,
     "network": true,
-    "masternodes": true
+    "masternodes": true,
+    "coininfo": false,
+    "coinmarketcap": false
   },
 
   // index page (valid options for difficulty are POW, POS or Hybrid)
@@ -84,8 +92,9 @@
     // Show Market Cap in place of price box
     "show_market_cap_over_price": false,
     "difficulty": "Hybrid",
-    "last_txs": 2000,
-    "txs_per_page": 25
+    "last_txs": 1000,
+    "txs_per_page": 25,
+    "show_coin_supply": true
   },
 
   // ensure links on API page are valid
@@ -141,6 +150,22 @@
       "ip": 0
     }
   },
+
+  // Coin info page
+"coininfo": {
+  "basic_info_links": [
+    ["Github", "http://github.com/"]
+  ],
+  "masternode_required": 1000,
+  "block_time_sec": 120,
+  "block_reward_mn": 5
+},
+
+// CoinMarketCap integration
+"coinmarketcap": {
+  "ticker": "BTC"
+},
+
   // twitter, facebook, googleplus, youtube
   "twitter": "https://twitter.com/NextExchange",
   "facebook": "https://www.facebook.com/NEXTexchangeOfficial",
@@ -150,6 +175,9 @@
   //genesis
   "genesis_tx": "acde39101535992102e4592505c5e969f999bb7d26a50625bab71a09202887b8",
   "genesis_block": "00000c118b4a5800274998482bfc37118b3d5318ac87cde92c6b744f65879b4c",
+
+  // Fetch blocks from <index>
+  "fetch_blocks_from": 0,
 
   //heavy (enable/disable additional heavy features)
   "heavy": false,
