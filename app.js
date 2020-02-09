@@ -58,8 +58,6 @@ if (settings.heavy != true) {
     'getblockhash',
     'getblock',
     'getrawtransaction',
-    'masternode'
-    'masternodelist',
     'getmaxmoney',
     'getvote',
     'getmaxvote',
