@@ -8,7 +8,8 @@ var mongoose = require('mongoose')
   , MasternodeStats = require('../models/masternodeStats')
   , explorer = require('../lib/explorer')
   , settings = require('../lib/settings')
-  , fs = require('fs');
+  , fs = require('fs')
+  ;
 
 var mode = 'update';
 var database = 'index';
