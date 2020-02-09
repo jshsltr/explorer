@@ -4,6 +4,7 @@ var express = require('express')
     , locale = require('../lib/locale')
     , db = require('../lib/database')
     , lib = require('../lib/explorer')
+    , formatCurrency = require('format-currency')
     , formatNum = require('format-num')
     , qr = require('qr-image');
 
