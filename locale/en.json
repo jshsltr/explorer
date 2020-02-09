@@ -45,7 +45,7 @@
     // global
     "difficulty": "Difficulty",
     "network": "Network",
-    "masternodes": "Masternodes"
+    "masternodes": "Masternodes",
     "height": "Height",
     "timestamp": "Timestamp",
     "size": "Size",
